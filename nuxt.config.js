@@ -2,8 +2,8 @@ export default {
   ssr: false,
   target: 'static',
   head: {
-    titleTemplate: '%s - fda-nutrition-facts',
-    title: 'fda-nutrition-facts',
+    titleTemplate: '%s - FDA Nutrition Facts Label',
+    title: 'FDA Nutrition Facts Label',
     htmlAttrs: {
       lang: 'en'
     },
@@ -13,7 +13,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
   },
   css: ['~/assets/app.scss'],
   plugins: [],
