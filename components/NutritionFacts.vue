@@ -5,8 +5,8 @@
     <div class="servings">
       <p>{{ amounts.number_of_servings }} Serving Per Container</p>
       <div class="serving-size d-flex align-items-center justify-space-between">
-        <p class="bolder">Serving Size</p>
-        <p class="bolder">{{ amounts.serving }}g</p>
+        <p class="bold">Serving Size</p>
+        <p class="bold">{{ amounts.serving }}g</p>
       </div>
     </div>
     <v-divider class="thickiest" />
@@ -19,10 +19,40 @@
     </div>
     <v-divider class="thick" />
     <div class="nutrient-data">
-      <p class="text-right bolder">% Daily Value *</p>
+      <p class="text-right bold">% Daily Value *</p>
       <v-divider />
+      <ul>
+        <li
+          v-for="nutrient in servingArr"
+          :key="nutrient.id"
+          class="d-flex align-items-center justify-space-between"
+          :class="{
+            indented: nutrient.indentations > 0,
+            double: nutrient.indentations > 1
+          }"
+          :data-section="nutrient.section"
+        >
+          <div class="d-flex">
+            <p :class="{ bold: nutrient.indentations === 0 && nutrient.section === 0 }">
+              {{ nutrient.id === 232 ? `Includes ${Math.round(nutrient.value)}g` : '' }} {{ nutrient.name }}
+            </p>
+            &nbsp;
+            <p v-if="nutrient.id !== 232">
+              {{
+                nutrient.section === 0 || nutrient.value > 10
+                  ? Math.round(nutrient.value)
+                  : Math.round(nutrient.value * 10) / 10
+              }}{{ nutrient.unit?.name || 'g' }}
+            </p>
+          </div>
+          <p v-if="nutrient.daily_value" :class="{ bold: nutrient.section === 0 }">
+            {{ Math.round(dailyValue[nutrient.name]) }}%
+          </p>
+        </li>
+      </ul>
     </div>
-    <!-- <p class="disclaimer-text">{{ disclaimer }}</p> -->
+    <v-divider class="thick" />
+    <p class="disclaimer-text">{{ disclaimer }}</p>
   </div>
 </template>
 <script>
@@ -49,6 +79,24 @@ export default {
     return {
       disclaimer:
         '* The % Daily Value (DV) tells you how much nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.'
+    }
+  },
+  computed: {
+    servingArr() {
+      const servingArr = []
+      for (const key in this.serving) {
+        if (this.serving[key].enabled) {
+          servingArr.push(this.serving[key])
+        }
+      }
+      servingArr.sort((a, b) => a.order - b.order).sort((a, b) => a.section - b.section)
+      return servingArr
+    }
+  },
+  mounted() {
+    const firstElementOfSection = document.querySelector('[data-section=\'1\']')
+    if (firstElementOfSection) {
+      firstElementOfSection.classList.add('thick-border')
     }
   }
 }
@@ -90,21 +138,26 @@ export default {
       margin-top: auto;
     }
   }
-  .disclaimer-text {
-    font-size: 1rem;
+  .nutrient-data {
+    ul {
+      padding-left: 0;
+    }
+    li {
+      &:not(:first-child) {
+        border-top: 1px solid #000;
+        padding-top: 5px;
+      }
+      &.indented.double {
+        padding-left: 0;
+        margin-left: 50px;
+      }
+      &.thick-border {
+        border-width: 13px;
+      }
+    }
   }
-  .v-divider {
-    border-color: rgba(0, 0, 0, 1);
-    margin: 3px 0;
-    &.thick {
-      border-width: 4px;
-    }
-    &.thicker {
-      border-width: 7px;
-    }
-    &.thickiest {
-      border-width: 10px;
-    }
+  .disclaimer-text {
+    font-size: 0.94rem;
   }
 }
 </style>

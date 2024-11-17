@@ -6,11 +6,24 @@ p {
   line-height: 1.2;
 }
 .indented {
-  margin-left: 25px;
+  padding-left: 25px;
+  &.double {
+    padding-left: 50px;
+  }
 }
-.bold{ 
-  font-weight: 700;
-}
-.bolder {
+.bold {
   font-weight: 1000;
+}
+.v-divider {
+  border-color: rgba(0, 0, 0, 1) !important;
+  margin: 3px 0 !important;
+  &.thick {
+    border-width: 4px !important;
+  }
+  &.thicker {
+    border-width: 7px !important;
+  }
+  &.thickiest {
+    border-width: 10px !important;
+  }
 }

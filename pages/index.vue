@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       amounts: response.label.amounts,
-      dailyValue: response.label.dailyValue,
+      dailyValue: response.label.daily_value,
       serving: response.label.serving
     }
   }
