@@ -15,13 +15,13 @@
         <p>Amount Per Serving</p>
         <p>Calories</p>
       </div>
-      <p class="value">{{ Math.round(serving.Calories.value) }}</p>
+      <p class="value">{{ Math.round(caloriesPerServing) }}</p>
     </div>
     <v-divider class="thick" />
     <div class="nutrient-data">
       <p class="text-right bold">% Daily Value *</p>
       <v-divider />
-      <ul>
+      <ul v-if="servingArr.length">
         <li
           v-for="nutrient in servingArr"
           :key="nutrient.id"
@@ -59,6 +59,11 @@
 export default {
   name: 'NutritionFacts',
   props: {
+    caloriesPerServing: {
+      type: Number,
+      required: true,
+      default: 0
+    },
     amounts: {
       type: Object,
       required: true,
@@ -70,9 +75,9 @@ export default {
       default: () => {}
     },
     serving: {
-      type: Object,
+      type: Array,
       required: true,
-      default: () => {}
+      default: () => []
     }
   },
   data() {
@@ -83,12 +88,7 @@ export default {
   },
   computed: {
     servingArr() {
-      const servingArr = []
-      for (const key in this.serving) {
-        if (this.serving[key].enabled) {
-          servingArr.push(this.serving[key])
-        }
-      }
+      const servingArr = this.serving.filter( el => el.enabled)
       servingArr.sort((a, b) => a.order - b.order).sort((a, b) => a.section - b.section)
       return servingArr
     }
@@ -134,7 +134,7 @@ export default {
     }
     .value {
       font-weight: 1000;
-      font-size: 2.9rem;
+      font-size: 3.5rem;
       margin-top: auto;
     }
   }
@@ -145,7 +145,7 @@ export default {
     li {
       &:not(:first-child) {
         border-top: 1px solid #000;
-        padding-top: 5px;
+        padding-top: 7px;
       }
       &.indented.double {
         padding-left: 0;
