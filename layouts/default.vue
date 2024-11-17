@@ -10,7 +10,7 @@
       </v-container>
     </v-main>
     <v-footer app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>Food Label Maker &copy; {{ new Date().getFullYear() }} All Rights Reserved</span>
     </v-footer>
   </v-app>
 </template>

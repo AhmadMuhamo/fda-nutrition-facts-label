@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="12" md="8" align="center">
-      <nutrition-facts />
+      <nutrition-facts :amounts="amounts" :daily-value="dailyValue" :serving="serving"/>
     </v-col>
   </v-row>
 </template>
@@ -17,7 +17,9 @@ export default {
   },
   data() {
     return {
-      response
+      amounts: response.label.amounts,
+      dailyValue: response.label.dailyValue,
+      serving: response.label.serving
     }
   }
 }
