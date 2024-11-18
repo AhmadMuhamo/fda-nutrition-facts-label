@@ -3,7 +3,7 @@
   "customizeNutrients": "Personnaliser les nutriments",
   "footerCopyright": "Étiqueteuse alimentaire © {date} Tous droits réservés",
   "nutritionFacts": "Valeurs nutritionnelles",
-  "servingPerContainer": "Portion par contenant",
+  "servingPerContainer": "{amount} Portion par contenant",
   "servingSize": "Taille de la portion",
   "gUnit": "g",
   "amountPerServing": "Quantité par portion",

@@ -1,14 +1,25 @@
 <template>
-  <v-app :class="{ rtl: $i18n.locale === 'ar' }" :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
+  <v-app :class="{ 'v-application--is-rtl': $i18n.locale === 'ar' }" :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
     <v-app-bar fixed app>
       <v-toolbar-title>{{ $t('title') }}</v-toolbar-title>
       <v-spacer />
       <v-btn id="menu-activator" color="primary" outlined>
-        <img class="mr-2" :src="require(`@/static/flag-${$i18n.locale}.png`)" alt="" width="24" /> {{ localeBtnText }}
+        <img
+          :class="$i18n.locale === 'ar' ? 'ml-2' : 'mr-2'"
+          :src="require(`@/static/flag-${$i18n.locale}.png`)"
+          alt=""
+          width="24"
+        />
+        {{ localeBtnText }}
         <v-menu activator="#menu-activator" offset-y>
           <v-list>
             <v-list-item v-for="item in locales" :key="item.id" @click="switchLocale(item.value)">
-              <img class="mr-2" :src="require(`@/static/flag-${item.value}.png`)" alt="" width="24" />
+              <img
+                :class="$i18n.locale === 'ar' ? 'ml-2' : 'mr-2'"
+                :src="require(`@/static/flag-${item.value}.png`)"
+                alt=""
+                width="24"
+              />
               <v-list-item-title>{{ item.locale }}</v-list-item-title>
             </v-list-item>
           </v-list>

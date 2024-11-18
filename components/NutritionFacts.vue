@@ -1,9 +1,9 @@
 <template>
-  <div class="nf-container">
+  <div class="nf-container" :class="{ rtl: $i18n.locale === 'ar' }">
     <h1>{{ $t('nutritionFacts') }}</h1>
     <v-divider />
     <div class="servings">
-      <p>{{ amounts.number_of_servings }} {{ $t('servingPerContainer') }}</p>
+      <p>{{ $t('servingPerContainer', { amount: amounts.number_of_servings }) }}</p>
       <div class="serving-size d-flex align-items-center justify-space-between">
         <p class="bold">{{ $t('servingSize') }}</p>
         <p class="bold">{{ amounts.serving }}{{ $t('gUnit') }}</p>
@@ -89,7 +89,8 @@ export default {
     }
   },
   mounted() {
-    const firstElementOfSection = document.querySelector('[data-section=\'1\']')
+    // eslint-disable-next-line quotes
+    const firstElementOfSection = document.querySelector("[data-section='1']")
     if (firstElementOfSection) {
       firstElementOfSection.classList.add('thick-border')
     }
@@ -142,23 +143,37 @@ export default {
   .nutrient-data {
     ul {
       padding-left: 0;
-    }
-    li {
-      &:not(:first-child) {
-        border-top: 1px solid #000;
-        padding-top: 7px;
-      }
-      &.indented.double {
-        padding-left: 0;
-        margin-left: 50px;
-      }
-      &.thick-border {
-        border-width: 13px;
+      li {
+        &:not(:first-child) {
+          border-top: 1px solid #000;
+          padding-top: 7px;
+        }
+        &.indented.double {
+          padding-left: 0;
+          margin-left: 50px;
+        }
+        &.thick-border {
+          border-width: 13px;
+        }
       }
     }
   }
   .disclaimer-text {
     font-size: 0.94rem;
+  }
+  &.rtl {
+    text-align: right;
+    .nutrient-data {
+      ul {
+        li {
+          &.indented.double {
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 50px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

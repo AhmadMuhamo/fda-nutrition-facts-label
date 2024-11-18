@@ -3,7 +3,7 @@
   "customizeNutrients": "Personalizar nutrientes",
   "footerCopyright": "Creador de etiquetas para alimentos © {date} Todos los derechos reservados",
   "nutritionFacts": "Datos nutricionales",
-  "servingPerContainer": "Porciones por envase",
+  "servingPerContainer": "{amount} Porciones por envase",
   "servingSize": "Tamaño de la porción",
   "gUnit": "g",
   "amountPerServing": "Cantidad por ración",

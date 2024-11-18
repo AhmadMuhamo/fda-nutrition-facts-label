@@ -30,3 +30,17 @@ p {
     border-width: 10px !important;
   }
 }
+
+div.v-application--is-rtl {
+  .indented {
+    padding-left: 0;
+    padding-right: 25px;
+    &.double {
+      padding-left: 0;
+      padding-right: 50px;
+    }
+  }
+  .text-right {
+    text-align: left !important;
+  }
+}

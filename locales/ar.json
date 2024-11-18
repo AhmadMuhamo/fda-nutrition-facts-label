@@ -3,7 +3,7 @@
   "customizeNutrients": "تخصيص العناصر الغذائية",
   "footerCopyright": "جميع الحقوق محفوظة © Food Label Maker {date}",
   "nutritionFacts": "حقائق التغذية",
-  "servingPerContainer": "الحصة لكل حاوية",
+  "servingPerContainer": "الحصة لكل حاوية {amount}",
   "servingSize": "حجم الحصة",
   "gUnit": "جم",
   "amountPerServing": "الكمية لكل وجبة",

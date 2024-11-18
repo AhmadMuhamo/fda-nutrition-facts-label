@@ -3,7 +3,7 @@
   "customizeNutrients": "Customize Nutrients",
   "footerCopyright": "Food Label Maker © {date} All Rights Reserved",
   "nutritionFacts": "Nutrition Facts",
-  "servingPerContainer": "Serving Per Container",
+  "servingPerContainer": "{amount} Serving Per Container",
   "servingSize": "Serving Size",
   "gUnit": "g",
   "amountPerServing": "Amount Per Serving",
