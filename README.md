@@ -16,3 +16,6 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+
+# live demo
+https://fda-nutrition-facts-label-7sjwqcr07-ahmadmuhamos-projects.vercel.app/
