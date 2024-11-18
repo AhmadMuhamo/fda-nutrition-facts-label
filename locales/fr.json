@@ -1,0 +1,14 @@
+{
+  "title": "Étiquette de valeur nutritive de la FDA",
+  "customizeNutrients": "Personnaliser les nutriments",
+  "footerCopyright": "Étiqueteuse alimentaire © {date} Tous droits réservés",
+  "nutritionFacts": "Valeurs nutritionnelles",
+  "servingPerContainer": "Portion par contenant",
+  "servingSize": "Taille de la portion",
+  "gUnit": "g",
+  "amountPerServing": "Quantité par portion",
+  "calories": "Calories",
+  "dailyValue": "Valeur quotidienne",
+  "addedSugar": "Comprend {value}g",
+  "disclaimerText": "* Le % de la valeur quotidienne (VQ) vous indique la quantité de nutriments contenus dans une portion d'aliment qui contribue à un régime alimentaire quotidien. 2 000 calories par jour sont utilisées pour des conseils nutritionnels généraux."
+}

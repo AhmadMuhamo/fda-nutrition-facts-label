@@ -1,7 +1,7 @@
 <template>
   <v-app :class="{ rtl: $i18n.locale === 'ar' }" :dir="$i18n.locale === 'ar' ? 'rtl' : 'ltr'">
     <v-app-bar fixed app>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title>{{ $t('title') }}</v-toolbar-title>
       <v-spacer />
       <v-btn id="menu-activator" color="primary" outlined>
         <img class="mr-2" :src="require(`@/static/flag-${$i18n.locale}.png`)" alt="" width="24" /> {{ localeBtnText }}
@@ -21,7 +21,7 @@
       </v-container>
     </v-main>
     <v-footer app>
-      <span>Food Label Maker &copy; {{ new Date().getFullYear() }} All Rights Reserved</span>
+      <span>{{ $t('footerCopyright', { date: new Date().getFullYear() }) }} </span>
     </v-footer>
   </v-app>
 </template>
@@ -31,7 +31,6 @@ export default {
   name: 'DefaultLayout',
   data() {
     return {
-      title: 'FDA Nutrition Facts Label',
       locales: [
         {
           id: 1,
@@ -45,12 +44,12 @@ export default {
         },
         {
           id: 3,
-          locale: 'Spanish',
+          locale: 'Español',
           value: 'es'
         },
         {
           id: 4,
-          locale: 'French',
+          locale: 'français',
           value: 'fr'
         }
       ]
@@ -62,9 +61,9 @@ export default {
         case 'ar':
           return 'العربية'
         case 'es':
-          return 'Spanish'
+          return 'Español'
         case 'fr':
-          return 'French'
+          return 'français'
         default:
           return 'English'
       }

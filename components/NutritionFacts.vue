@@ -1,25 +1,25 @@
 <template>
   <div class="nf-container">
-    <h1>Nutrition Facts</h1>
+    <h1>{{ $t('nutritionFacts') }}</h1>
     <v-divider />
     <div class="servings">
-      <p>{{ amounts.number_of_servings }} Serving Per Container</p>
+      <p>{{ amounts.number_of_servings }} {{ $t('servingPerContainer') }}</p>
       <div class="serving-size d-flex align-items-center justify-space-between">
-        <p class="bold">Serving Size</p>
-        <p class="bold">{{ amounts.serving }}g</p>
+        <p class="bold">{{ $t('servingSize') }}</p>
+        <p class="bold">{{ amounts.serving }}{{ $t('gUnit') }}</p>
       </div>
     </div>
     <v-divider class="thickiest" />
     <div class="calories d-flex justify-space-between">
       <div class="label">
-        <p>Amount Per Serving</p>
-        <p>Calories</p>
+        <p>{{ $t('amountPerServing') }}</p>
+        <p>{{ $t('calories') }}</p>
       </div>
       <p class="value">{{ Math.round(caloriesPerServing) }}</p>
     </div>
     <v-divider class="thick" />
     <div class="nutrient-data">
-      <p class="text-right bold">% Daily Value *</p>
+      <p class="text-right bold">% {{ $t('dailyValue') }} *</p>
       <v-divider />
       <ul v-if="servingArr.length">
         <li
@@ -34,7 +34,8 @@
         >
           <div class="d-flex">
             <p :class="{ bold: nutrient.indentations === 0 && nutrient.section === 0 }">
-              {{ nutrient.id === 232 ? `Includes ${Math.round(nutrient.value)}g` : '' }} {{ nutrient.name }}
+              {{ nutrient.id === 232 ? $t('addedSugar', { value: Math.round(nutrient.value) }) : '' }}
+              {{ getName(nutrient) }}
             </p>
             &nbsp;
             <p v-if="nutrient.id !== 232">
@@ -42,7 +43,7 @@
                 nutrient.section === 0 || nutrient.value > 10
                   ? Math.round(nutrient.value)
                   : Math.round(nutrient.value * 10) / 10
-              }}{{ nutrient.unit?.name || 'g' }}
+              }}{{ nutrient.unit ? getName(nutrient.unit) : $t('gUnit') }}
             </p>
           </div>
           <p v-if="nutrient.daily_value" :class="{ bold: nutrient.section === 0 }">
@@ -52,7 +53,7 @@
       </ul>
     </div>
     <v-divider class="thick" />
-    <p class="disclaimer-text">{{ disclaimer }}</p>
+    <p class="disclaimer-text">{{ $t('disclaimerText') }}</p>
   </div>
 </template>
 <script>
@@ -80,15 +81,9 @@ export default {
       default: () => []
     }
   },
-  data() {
-    return {
-      disclaimer:
-        '* The % Daily Value (DV) tells you how much nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.'
-    }
-  },
   computed: {
     servingArr() {
-      const servingArr = this.serving.filter( el => el.enabled)
+      const servingArr = this.serving.filter((el) => el.enabled)
       servingArr.sort((a, b) => a.order - b.order).sort((a, b) => a.section - b.section)
       return servingArr
     }
@@ -97,6 +92,12 @@ export default {
     const firstElementOfSection = document.querySelector('[data-section=\'1\']')
     if (firstElementOfSection) {
       firstElementOfSection.classList.add('thick-border')
+    }
+  },
+  methods: {
+    getName(item) {
+      const locale = this.$i18n.locale
+      return locale === 'en' ? item.name : item[`name_${locale}`]
     }
   }
 }

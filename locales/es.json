@@ -1,0 +1,14 @@
+{
+  "title": "Etiqueta de información nutricional de la FDA",
+  "customizeNutrients": "Personalizar nutrientes",
+  "footerCopyright": "Creador de etiquetas para alimentos © {date} Todos los derechos reservados",
+  "nutritionFacts": "Datos nutricionales",
+  "servingPerContainer": "Porciones por envase",
+  "servingSize": "Tamaño de la porción",
+  "gUnit": "g",
+  "amountPerServing": "Cantidad por ración",
+  "calories": "Calorias",
+  "dailyValue": "Valor diario",
+  "addedSugar": "Incluye {value}g",
+  "disclaimerText": "* El % del valor diario (VD) indica cuánto nutriente en una porción de alimento contribuye a una dieta diaria. Se utilizan 2000 calorías al día para asesoramiento nutricional general."
+}

@@ -9,13 +9,13 @@
       />
     </v-col>
     <v-col cols="12" sm="12" md="6">
-      <h1>Customize Nutrients</h1>
+      <h1>{{ $t('customizeNutrients') }}</h1>
       <div style="max-height: 700px;overflow: scroll;">
         <v-checkbox
           v-for="item in serving"
           :key="item.id"
           v-model="item.enabled"
-          :label="item.name"
+          :label="getItemName(item)"
           dense
           hide-details
         />
@@ -43,6 +43,12 @@ export default {
       dailyValue: response.label?.daily_value,
       serving,
       caloriesPerServing: response.label?.serving?.Calories?.value
+    }
+  },
+  methods: {
+    getItemName(item){
+      const locale = this.$i18n.locale
+      return locale === 'en' ? item.name : item[`name_${locale}`]
     }
   }
 }

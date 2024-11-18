@@ -1,0 +1,14 @@
+{
+  "title": "FDA Nutrition Facts Label",
+  "customizeNutrients": "Customize Nutrients",
+  "footerCopyright": "Food Label Maker © {date} All Rights Reserved",
+  "nutritionFacts": "Nutrition Facts",
+  "servingPerContainer": "Serving Per Container",
+  "servingSize": "Serving Size",
+  "gUnit": "g",
+  "amountPerServing": "Amount Per Serving",
+  "calories": "Calories",
+  "dailyValue": "Daily Value",
+  "addedSugar": "Includes {value}g",
+  "disclaimerText": "* The % Daily Value (DV) tells you how much nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice."
+}

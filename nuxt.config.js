@@ -1,3 +1,5 @@
+import i18n from './plugins/i18n'
+
 export default {
   ssr: false,
   target: 'static',
@@ -22,12 +24,14 @@ export default {
   modules: ['@nuxtjs/i18n'],
   i18n: {
     locales: [
-      { code: 'en', language: 'en-US' },
-      { code: 'ar', language: 'ar-EG', dir: 'rtl' },
-      { code: 'es', language: 'es-ES' },
-      { code: 'fr', language: 'fr-FR' }
+      { code: 'en', iso: 'en-US', file: 'locales/en.json', dir: 'ltr' },
+      { code: 'ar', iso: 'ar-EG', file: 'locales/ar.json', dir: 'rtl' },
+      { code: 'es', iso: 'es-ES', file: 'locales/es.json', dir: 'ltr' },
+      { code: 'fr', iso: 'fr-FR', file: 'locales/fr.json', dir: 'ltr' }
     ],
-    defaultLocale: 'en'
+    defaultLocale: 'en',
+    defaultDirection: 'ltr',
+    vueI18n: i18n
   },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
