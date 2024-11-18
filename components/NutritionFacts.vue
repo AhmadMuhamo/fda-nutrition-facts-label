@@ -35,7 +35,13 @@
           <div class="d-flex">
             <p :class="{ bold: nutrient.indentations === 0 && nutrient.section === 0 }">
               {{ nutrient.id === 232 ? $t('addedSugar', { value: Math.round(nutrient.value) }) : '' }}
-              {{ getName(nutrient) }}
+              <span v-if="nutrient.id === 134 && $i18n.locale === 'en'">
+                <em>{{ $t('trans') }}</em> {{ $t('fat') }}
+              </span>
+              <span v-else-if="nutrient.id === 134 && $i18n.locale !== 'en'">
+                {{ $t('fat') }} <em>{{ $t('trans') }}</em>
+              </span>
+              <span v-else>{{ getName(nutrient) }}</span>
             </p>
             &nbsp;
             <p v-if="nutrient.id !== 232">

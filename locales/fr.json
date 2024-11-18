@@ -10,5 +10,7 @@
   "calories": "Calories",
   "dailyValue": "Valeur quotidienne",
   "addedSugar": "Comprend {value}g",
+  "trans": "trans",
+  "fat": "Gras",
   "disclaimerText": "* Le % de la valeur quotidienne (VQ) vous indique la quantité de nutriments contenus dans une portion d'aliment qui contribue à un régime alimentaire quotidien. 2 000 calories par jour sont utilisées pour des conseils nutritionnels généraux."
 }

@@ -10,5 +10,8 @@
   "calories": "Calories",
   "dailyValue": "Daily Value",
   "addedSugar": "Includes {value}g",
+  "trans": "Trans",
+  "fat": "Fat",
+  "transFat": "<span>Trans</span> Fat",
   "disclaimerText": "* The % Daily Value (DV) tells you how much nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice."
 }

@@ -10,5 +10,7 @@
   "calories": "Calorias",
   "dailyValue": "Valor diario",
   "addedSugar": "Incluye {value}g",
+  "trans": "trans",
+  "fat": "Grasas",
   "disclaimerText": "* El % del valor diario (VD) indica cuánto nutriente en una porción de alimento contribuye a una dieta diaria. Se utilizan 2000 calorías al día para asesoramiento nutricional general."
 }
