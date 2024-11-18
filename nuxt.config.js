@@ -19,7 +19,16 @@ export default {
   plugins: [],
   components: true,
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
-  modules: [],
+  modules: ['@nuxtjs/i18n'],
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US' },
+      { code: 'ar', language: 'ar-EG', dir: 'rtl' },
+      { code: 'es', language: 'es-ES' },
+      { code: 'fr', language: 'fr-FR' }
+    ],
+    defaultLocale: 'en'
+  },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {

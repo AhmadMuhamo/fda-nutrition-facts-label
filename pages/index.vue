@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="center" class="pt-10">
+  <v-row justify="center"  class="pt-10">
     <v-col cols="12" sm="12" md="6" align="center">
       <nutrition-facts
         :amounts="amounts"
