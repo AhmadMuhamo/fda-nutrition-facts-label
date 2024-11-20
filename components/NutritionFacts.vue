@@ -169,6 +169,27 @@ export default {
   }
   &.rtl {
     text-align: right;
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .calories {
+      .label p {
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 1.3;
+        &:first-child {
+          font-size: 1.6rem;
+          line-height: 1.3;
+        }
+      }
+      .value {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+    }
     .nutrient-data {
       ul {
         li {
