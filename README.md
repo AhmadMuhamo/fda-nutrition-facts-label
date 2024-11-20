@@ -18,4 +18,4 @@ $ npm run generate
 ```
 
 # live demo
-https://fda-nutrition-facts-label-7sjwqcr07-ahmadmuhamos-projects.vercel.app/
+https://fda-nutrition-facts-label.vercel.app/
