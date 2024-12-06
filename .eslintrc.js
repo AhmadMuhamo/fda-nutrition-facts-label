@@ -21,6 +21,7 @@ module.exports = {
     'vue/valid-v-slot': 'off',
     'vue/no-v-html': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/first-attribute-linebreak': 'off',
     'comma-dangle': [
       'error',
       {

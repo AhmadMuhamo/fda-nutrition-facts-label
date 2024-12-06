@@ -22,40 +22,38 @@
       <p class="text-right bold">% {{ $t('dailyValue') }} *</p>
       <v-divider />
       <ul v-if="servingArr.length">
-        <li
-          v-for="nutrient in servingArr"
-          :key="nutrient.id"
-          class="d-flex align-items-center justify-space-between"
-          :class="{
+        <div v-for="(nutrient, index) in servingArr" :key="nutrient.id">
+          <li :class="{
             indented: nutrient.indentations > 0,
             double: nutrient.indentations > 1
-          }"
-          :data-section="nutrient.section"
-        >
-          <div class="d-flex">
-            <p :class="{ bold: nutrient.indentations === 0 && nutrient.section === 0 }">
-              {{ nutrient.id === 232 ? $t('addedSugar', { value: Math.round(nutrient.value) }) : '' }}
-              <span v-if="nutrient.id === 134 && $i18n.locale === 'en'">
-                <em>{{ $t('trans') }}</em> {{ $t('fat') }}
-              </span>
-              <span v-else-if="nutrient.id === 134 && $i18n.locale !== 'en'">
-                {{ $t('fat') }} <em>{{ $t('trans') }}</em>
-              </span>
-              <span v-else>{{ getName(nutrient) }}</span>
+          }" class="d-flex align-items-center justify-space-between">
+            <div class="d-flex">
+              <p :class="{ bold: nutrient.indentations === 0 && nutrient.section === 0 }">
+                {{ nutrient.id === 232 ? $t('addedSugar', { value: Math.round(nutrient.value) }) : '' }}
+                <span v-if="nutrient.id === 134 && $i18n.locale === 'en'">
+                  <em>{{ $t('trans') }}</em> {{ $t('fat') }}
+                </span>
+                <span v-else-if="nutrient.id === 134 && $i18n.locale !== 'en'">
+                  {{ $t('fat') }} <em>{{ $t('trans') }}</em>
+                </span>
+                <span v-else>{{ getName(nutrient) }}</span>
+              </p>
+              &nbsp;
+              <p v-if="nutrient.id !== 232">
+                {{
+                  nutrient.section === 0 || nutrient.value > 10
+                    ? Math.round(nutrient.value)
+                    : Math.round(nutrient.value * 10) / 10
+                }}{{ nutrient.unit ? getName(nutrient.unit) : $t('gUnit') }}
+              </p>
+            </div>
+            <p v-if="nutrient.daily_value" :class="{ bold: nutrient.section === 0 }">
+              {{ Math.round(dailyValue[nutrient.name]) }}%
             </p>
-            &nbsp;
-            <p v-if="nutrient.id !== 232">
-              {{
-                nutrient.section === 0 || nutrient.value > 10
-                  ? Math.round(nutrient.value)
-                  : Math.round(nutrient.value * 10) / 10
-              }}{{ nutrient.unit ? getName(nutrient.unit) : $t('gUnit') }}
-            </p>
-          </div>
-          <p v-if="nutrient.daily_value" :class="{ bold: nutrient.section === 0 }">
-            {{ Math.round(dailyValue[nutrient.name]) }}%
-          </p>
-        </li>
+          </li>
+          <v-divider v-if="index !== servingArr.length - 1 && nutrient.section !== servingArr[index + 1]?.section"
+            class="thicker" />
+        </div>
       </ul>
     </div>
     <v-divider class="thick" />
@@ -74,12 +72,12 @@ export default {
     amounts: {
       type: Object,
       required: true,
-      default: () => {}
+      default: () => { }
     },
     dailyValue: {
       type: Object,
       required: true,
-      default: () => {}
+      default: () => { }
     },
     serving: {
       type: Array,
@@ -92,13 +90,6 @@ export default {
       const servingArr = this.serving.filter((el) => el.enabled)
       servingArr.sort((a, b) => a.order - b.order).sort((a, b) => a.section - b.section)
       return servingArr
-    }
-  },
-  mounted() {
-    // eslint-disable-next-line quotes
-    const firstElementOfSection = document.querySelector("[data-section='1']")
-    if (firstElementOfSection) {
-      firstElementOfSection.classList.add('thick-border')
     }
   },
   methods: {
@@ -117,79 +108,93 @@ export default {
   border-radius: 0 !important;
   padding: 10px;
   text-align: left;
+
   h1 {
     font-weight: 1000;
     font-size: 3.6rem;
     line-height: 1;
   }
+
   .servings {
     p {
       font-size: 1.6rem;
     }
+
     .serving-size p {
       font-size: 1.9rem;
     }
   }
+
   .calories {
     .label p {
       font-weight: 1000;
       font-size: 2.9rem;
       line-height: 1;
+
       &:first-child {
         font-size: 1.6rem;
         line-height: 1;
       }
     }
+
     .value {
       font-weight: 1000;
       font-size: 3.5rem;
       margin-top: auto;
     }
   }
+
   .nutrient-data {
     ul {
       padding-left: 0;
-      li {
+      div {
         &:not(:first-child) {
-          border-top: 1px solid #000;
-          padding-top: 7px;
-        }
-        &.indented.double {
-          padding-left: 0;
-          margin-left: 50px;
-        }
-        &.thick-border {
-          border-width: 13px;
+          li {
+            border-top: 1px solid #000;
+            padding-top: 7px;
+
+            &.indented.double {
+              padding-left: 0;
+              margin-left: 50px;
+            }
+          }
         }
       }
     }
   }
+
   .disclaimer-text {
     font-size: 0.94rem;
   }
+
   &.rtl {
     text-align: right;
+
     h1 {
       font-size: 3rem;
       font-weight: 700;
       line-height: 1.3;
     }
+
     .calories {
       .label p {
         font-weight: 700;
         font-size: 2.5rem;
         line-height: 1.3;
+
         &:first-child {
           font-size: 1.6rem;
           line-height: 1.3;
         }
       }
+
       .value {
         font-size: 3rem;
         font-weight: 700;
         line-height: 1;
       }
     }
+
     .nutrient-data {
       ul {
         li {
